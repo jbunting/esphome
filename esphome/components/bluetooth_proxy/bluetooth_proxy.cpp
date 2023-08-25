@@ -376,6 +376,7 @@ void BluetoothProxy::bluetooth_gatt_write(const api::BluetoothGATTWriteRequest &
 }
 
 void BluetoothProxy::bluetooth_gatt_read_descriptor(const api::BluetoothGATTReadDescriptorRequest &msg) {
+  ESP_LOGW(TAG, "Reading GATT descriptor %lu", msg.handle);
   auto *connection = this->get_connection_(msg.address, false);
   if (connection == nullptr) {
     ESP_LOGW(TAG, "Cannot read GATT descriptor, not connected");
